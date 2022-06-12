@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  ##メモ /rails/info/routes
 
   # ユーザー用
   # URL /user/sign_in ...
