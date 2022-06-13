@@ -1,0 +1,18 @@
+<h2>部署一覧・追加</h2>
+<%= form_with url: admin_departments_path(@department), model: @department do |f| %>
+
+<tr>
+  <th><%= f.text_field :name %></th>
+  <td><%= f.submit "新規登録" %></td>
+</tr>
+</table>
+<% end %>
+
+
+ <table>
+  <% @departments.each do |department| %>
+    <tr>
+      <th><%= department.name %></th>
+    </tr>
+  <% end %>
+</table>

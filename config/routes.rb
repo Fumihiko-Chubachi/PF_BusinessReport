@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
-  ##メモ /rails/info/routes
+  
+  
+  ##メモ  /rails/info/routes
+  ##      例：rails g controller public/items
+  
+  ##メモ  rails db:migrate:status
+  ##      rails db:rollback STEP=数字
 
   # ユーザー用
   # URL /user/sign_in ...
@@ -13,5 +19,9 @@ Rails.application.routes.draw do
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
   }
+  
+  namespace :admin do
+    resources :departments
+  end
   
 end
