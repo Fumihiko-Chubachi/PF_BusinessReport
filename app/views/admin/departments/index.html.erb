@@ -1,4 +1,4 @@
-<h2>部署一覧・追加</h2>
+<h1>部署一覧・追加</h1>
 <%= form_with url: admin_departments_path(@department), model: @department do |f| %>
 
 <tr>
@@ -7,7 +7,6 @@
 </tr>
 </table>
 <% end %>
-
 
  <table>
   <% @departments.each do |department| %>

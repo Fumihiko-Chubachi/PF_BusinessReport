@@ -1,0 +1,41 @@
+<h1>user new</h1>
+
+<%= form_with model: @user, url:admin_users_path do |f| %>
+
+  <div>
+    <a>部署</a>
+    <%= f.collection_select :department_id, Department.all, :id, :name %>
+  </div>
+
+  <div>
+    <a>社員コード</a>
+    <%= f.text_field :employee_code %>
+  </div>
+
+  <div>
+    <a>名前</a>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <a>役職</a>
+    <%= f.radio_button :position, "false" %>
+    <%= f.label :一般職 %>
+    <%= f.radio_button :position, "true" %>
+    <%= f.label :管理職 %>
+  </div>
+  
+  <div>
+    <a>メール</a>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div>
+    <a>パスワード</a>
+    <%= f.password_field :password %>
+  </div>
+
+
+  <%= f.submit "新規登録" %>
+
+<% end %>

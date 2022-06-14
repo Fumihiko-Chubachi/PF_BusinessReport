@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+  root to: 'homes#top'
   
   ##メモ  /rails/info/routes
   ##      例：rails g controller public/items
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   namespace :admin do
     resources :departments
+    resources :users
   end
   
 end

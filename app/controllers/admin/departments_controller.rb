@@ -9,8 +9,8 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def create
-    @depratment = Department.new(department_params)
-    @depratment.save
+    @department = Department.new(department_params)
+    @department.save
     redirect_to admin_departments_path
   end
 
