@@ -1,0 +1,11 @@
+ja:
+  enums:
+    work:
+      progress_status:
+        unanswered: "未回答"
+        checking: "確認中"
+        examination: "検討中"
+        possible: "実施可"
+        impossible: "実施不可"
+        in_progress: "実施中"
+        completion: "実施済"

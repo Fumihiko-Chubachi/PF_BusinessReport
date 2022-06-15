@@ -1,0 +1,31 @@
+<h1>new work</h1>
+
+<%= form_with model: @work, url:public_works_path do |f| %>
+  <div>
+    <a>送り先</a>
+    <%= f.collection_select :to_user_id, User.all, :id, :name %>
+  </div>
+  
+  <div>
+    <a>件名</a>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div>
+    <a>目的</a>
+    <%= f.text_area :purpose %>
+  </div>
+  
+  <div>
+    <a>背景</a>
+    <%= f.text_area :background %>
+  </div>
+  
+  <div>
+    <a>依頼内容</a>
+    <%= f.text_area :body %>
+  </div>
+  
+  <%= f.submit "送信" %>
+  
+<% end %>
