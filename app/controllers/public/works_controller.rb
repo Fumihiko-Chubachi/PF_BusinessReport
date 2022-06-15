@@ -1,15 +1,23 @@
 class Public::WorksController < ApplicationController
   
+  def department
+    @departments = Department.all
+  end
+  
   def new
+    @target_user = User.where(department_id: params[:target_department])
     @work = Work.new
   end
   
   def create
     @work = Work.new(work_params)
     @work.from_user_id = current_user.id
-    byebug
     @work.save
     redirect_to root_path
+  end
+  
+  def show
+    
   end
   
   private

@@ -1,0 +1,12 @@
+<h1>select department</h1>
+
+<%= form_with url:new_public_work_path, method: :get do |f| %>
+
+  <div>
+    <a>送り先</a>
+    <%= f.collection_select :target_department, @departments, :id, :name %>
+  </div>
+  
+  <%= f.submit "入力画面へ" %>
+  
+<% end %>
