@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2022_06_16_043942) do
   end
 
   create_table "works", force: :cascade do |t|
-    t.integer "from_user_id", null: false
+    t.integer "user_id", null: false
     t.integer "to_user_id", null: false
     t.text "title", null: false
     t.text "purpose", null: false

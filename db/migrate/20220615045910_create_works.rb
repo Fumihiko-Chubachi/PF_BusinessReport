@@ -1,7 +1,7 @@
 class CreateWorks < ActiveRecord::Migration[6.1]
   def change
     create_table :works do |t|
-      t.integer :from_user_id, null: false
+      t.integer :user_id, null: false
       t.integer :to_user_id, null: false
       t.text :title, null: false
       t.text :purpose, null: false

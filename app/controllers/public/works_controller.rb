@@ -11,7 +11,7 @@ class Public::WorksController < ApplicationController
   
   def create
     @work = Work.new(work_params)
-    @work.from_user_id = current_user.id
+    @work.user_id = current_user.id
     @work.save
     redirect_to root_path
   end

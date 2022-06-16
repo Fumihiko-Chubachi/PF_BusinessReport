@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :works, dependent: :destroy
+  has_many :dailyreports, dependent: :destroy
   belongs_to :department
 
 end
