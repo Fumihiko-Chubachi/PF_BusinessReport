@@ -1,0 +1,37 @@
+<h1>業務日報</h1>
+
+  <%= form_with model: @dailyreport, url:public_dailyreports_path do |f| %>
+
+  <div>
+    <a>所属</a>
+    <%= current_user.department.name %>
+  </div>
+
+  <div>
+    <a>氏名</a>
+    <%= current_user.name %>
+  </div>
+
+  <div>
+    <a>今日の目標</a>
+    <%= f.text_area :objective %>
+  </div>
+
+  <div>
+    <a>業務概要（実績等）</a>
+    <%= f.text_area :summary %>
+  </div>
+
+  <div>
+    <a>反省・問題点</a>
+    <%= f.text_area :introspection %>
+  </div>
+
+  <div>
+    <a>明日の目標・改善点</a>
+    <%= f.text_area :improvement %>
+  </div>
+
+  <%= f.submit "送信" %>
+  
+<% end %>
