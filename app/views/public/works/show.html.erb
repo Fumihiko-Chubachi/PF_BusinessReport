@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/works/sidebar' %>
+    </div>
+    <div class="col-md-10">
+      <table class="table">
+        <tr>
+          <th class="col-3">【件名】</th>
+          <td class="col-9"><%= @work.title %></td>
+        </tr>
+        <tr>
+          <th class="col-3">【目的】</th>
+          <td class="col-9"><%= @work.purpose %></td>
+        </tr>
+        <tr>
+          <th class="col-3">【背景】</th>
+          <td class="col-9"><%= @work.background %></td>
+        </tr>
+        <tr>
+          <th class="col-3">【内容】</th>
+          <td class="col-9"><%= @work.body %></td>
+        </tr>
+      </table>
+
+      <div>
+        <%= render "public/work_comments/index", work: @work %>
+        <%= render "public/work_comments/form", work: @work, work_comment: @work_comment %>
+      </div>
+
+    </div>
+  </div>
+</div>

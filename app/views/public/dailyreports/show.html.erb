@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <%= render 'public/works/sidebar' %>
+    </div>
+    <div class="col-10">
+      <h1>業務日報</h1>
+      <table class="table">
+        <tr>
+          <th class="col-3">今日の目標</th>
+          <td class="col-9"><%= @dailyreport.objective %></td>
+        </tr>
+        <tr>
+          <th class="col-3">業務概要（実績等）</th>
+          <td class="col-9"><%= @dailyreport.summary %></td>
+        </tr>
+        <tr>
+          <th class="col-3">反省・問題点</th>
+          <td class="col-9"><%= @dailyreport.introspection %></td>
+        </tr>
+        <tr>
+          <th class="col-3">明日の目標・改善点</th>
+          <td class="col-9"><%= @dailyreport.improvement %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

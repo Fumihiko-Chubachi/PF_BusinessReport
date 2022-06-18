@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/works/sidebar' %>
+    </div>
+    <div class="col-md-10">
+      <h1>依頼中の業務</h1>
+        <% @works.each do |work| %>
+          <%= link_to work.title, public_work_path(work.id) %>
+        <% end %>
+      <!--<h3>未回答の業務</h3>-->
+      <!--<h3>対応中の業務</h3>-->
+      <!--<h3>回答済の業務</h3>-->
+    </div>
+  </div>
+</div>

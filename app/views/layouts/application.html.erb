@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
+    <header class="shadow-lg bg-dark">
+      
+      <nav class="navbar">
       <% if user_signed_in? %>
         <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
       <% elsif admin_signed_in? %>
@@ -21,6 +23,7 @@
         <%= link_to "ユーザーログイン", new_user_session_path %>
         <%= link_to "管理者ログイン", new_admin_session_path %>
       <% end %>
+      </nav>
     </header>
     <%= yield %>
   </body>

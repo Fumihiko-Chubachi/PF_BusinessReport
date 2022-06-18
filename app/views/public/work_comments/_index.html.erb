@@ -1,0 +1,17 @@
+<table class="table">
+  <% work.work_comments.each do |work_comment| %>
+    <tr>
+      <th class="col-3">
+        <%= work_comment.user.department.name %>　<%= work_comment.user.name %>
+      </th>
+      <td class="col-8">
+        <%= work_comment.comment %>
+      </td>
+      <td class="col-1">
+        <% if work_comment.user == current_user %>
+            <%= link_to "削除", public_work_comment_path(work_comment), method: :delete %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

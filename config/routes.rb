@@ -28,7 +28,9 @@ Rails.application.routes.draw do
   namespace :public do
     get "/works/department", to: "works#department", as: "new_select_department_work"
     resources :works
+    resources :work_comments
     resources :dailyreports
+    resources :dailyreport_comments
   end
   
 end

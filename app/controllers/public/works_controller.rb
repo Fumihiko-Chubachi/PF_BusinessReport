@@ -9,6 +9,15 @@ class Public::WorksController < ApplicationController
     @work = Work.new
   end
   
+  def index
+    @works = Work.all
+  end
+  
+  def show
+    @work = Work.find(params[:id])
+    @work_comment = WorkComment.new
+  end
+  
   def create
     @work = Work.new(work_params)
     @work.user_id = current_user.id
@@ -16,14 +25,10 @@ class Public::WorksController < ApplicationController
     redirect_to root_path
   end
   
-  def show
-    
-  end
-  
   private
 
   def work_params
     params.require(:work).permit(:from_user_id, :to_user_id, :title, :purpose, :background, :body, :progress_status)
   end
-  
+
 end

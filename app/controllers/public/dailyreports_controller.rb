@@ -5,9 +5,11 @@ class Public::DailyreportsController < ApplicationController
   end
   
   def index
+    @dailyreports = Dailyreport.all
   end
   
   def show
+    @dailyreport = Dailyreport.find(params[:id])
   end
   
   def create

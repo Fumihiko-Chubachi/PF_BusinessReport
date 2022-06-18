@@ -1,0 +1,2 @@
+class Public::DailyreportCommentsController < ApplicationController
+end
