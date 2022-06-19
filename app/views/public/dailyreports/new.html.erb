@@ -1,37 +1,44 @@
-<h1>業務日報</h1>
-
-  <%= form_with model: @dailyreport, url:public_dailyreports_path do |f| %>
-
-  <div>
-    <a>所属</a>
-    <%= current_user.department.name %>
+<div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center">日報投稿フォーム</h2>
+    </div>
   </div>
-
-  <div>
-    <a>氏名</a>
-    <%= current_user.name %>
+  <div class="row">
+    <dvi class="mx-auto col-8">
+      <%= form_with model: @dailyreport, url:public_dailyreports_path do |f| %>
+      <table class="table">
+        <tr>
+          <th>所属</th>
+          <td><%= current_user.department.name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= current_user.name %></td>
+        </tr>
+        <tr>
+          <th>今日の目標</th>
+          <td><%= f.text_area :objective, class:"form-control", rows: 5 %></td>
+        </tr>
+        <tr>
+          <th>業務概要（実績等）</th>
+          <td><%= f.text_area :summary, class:"form-control", rows: 5 %></td>
+        </tr>
+        <tr>
+          <th>反省・問題点</th>
+          <td><%= f.text_area :introspection, class:"form-control", rows: 5 %></td>
+        </tr>
+        <tr>
+          <th>明日の目標・改善点</th>
+          <td><%= f.text_area :improvement, class:"form-control", rows: 5 %></td>
+        </tr>
+      </table>
+    </dvi>
   </div>
-
-  <div>
-    <a>今日の目標</a>
-    <%= f.text_area :objective %>
+  <div class="row">
+    <div class="mx-auto col-3">
+      <%= f.submit "送信", class:"btn btn-info col-12" %>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <a>業務概要（実績等）</a>
-    <%= f.text_area :summary %>
-  </div>
-
-  <div>
-    <a>反省・問題点</a>
-    <%= f.text_area :introspection %>
-  </div>
-
-  <div>
-    <a>明日の目標・改善点</a>
-    <%= f.text_area :improvement %>
-  </div>
-
-  <%= f.submit "送信" %>
-  
-<% end %>
+</div>
