@@ -1,32 +1,42 @@
-<h1>new work</h1>
-
-<%= form_with model: @work, url:public_works_path do |f| %>
-
-  <div>
-    <a>送り先</a>
-    <%= f.collection_select :to_user_id, @target_user, :id, :name %>
+<div class="container">
+  <div class="row mt-4 mb-3">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center">新規業務依頼入力フォーム</h2>
+    </div>
   </div>
-  
-  <div>
-    <a>件名</a>
-    <%= f.text_field :title %>
+  <div class="row">
+    <div class="mx-auto col-6">
+      <%= form_with model: @work, url:public_works_path do |f| %>
+      <table class="table">
+        <tr>
+          <th>宛名</th>
+          <td><%= f.collection_select :to_user_id, @target_user, :id, :name %></td>
+        </tr>
+        <tr>
+          <th>件名</th>
+          <td><%= f.text_field :title, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>目的</th>
+          <td><%= f.text_area :purpose, class:"form-control", rows: 5 %></td>
+        </tr>
+        <tr>
+          <th>背景</th>
+          <td><%= f.text_area :background, class:"form-control", rows: 5 %></td>
+        </tr>
+        <tr>
+          <th>依頼内容</th>
+          <td><%= f.text_area :body, class:"form-control", rows: 8 %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-  
-  <div>
-    <a>目的</a>
-    <%= f.text_area :purpose %>
+  <div class="row">
+    <div class="mx-auto col-2">
+      <div>
+        <%= f.submit "送信", class:"btn btn-info col-12" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  
-  <div>
-    <a>背景</a>
-    <%= f.text_area :background %>
-  </div>
-  
-  <div>
-    <a>依頼内容</a>
-    <%= f.text_area :body %>
-  </div>
-  
-  <%= f.submit "送信" %>
-  
-<% end %>
+</div>

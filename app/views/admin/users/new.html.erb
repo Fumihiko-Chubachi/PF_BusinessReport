@@ -1,41 +1,49 @@
-<h1>user new</h1>
-
-<%= form_with model: @user, url:admin_users_path do |f| %>
-
-  <div>
-    <a>部署</a>
-    <%= f.collection_select :department_id, Department.all, :id, :name %>
+<div class="container">
+  <div class="row my-5">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center">ユーザー新規登録</h2>
+    </div>
   </div>
-
-  <div>
-    <a>社員コード</a>
-    <%= f.text_field :employee_code %>
+  <div class="row">
+    <div class="mx-auto col-6">
+      <%= form_with model: @user, url:admin_users_path do |f| %>
+      <table class="table">
+        <tr>
+          <th>社員コード</th>
+          <td><%= f.text_field :employee_code, class:"form-control"%></td>
+        </tr>
+        <tr>
+          <th>部署</th>
+          <td><%= f.collection_select :department_id, Department.all, :id, :name %></td>
+        </tr>
+        <tr>
+          <th>名前</th>
+          <td><%= f.text_field :name, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>役職</th>
+          <td>
+            <%= f.radio_button :position, "false" %>
+              <%= f.label :一般職, class:"mr-3" %>
+            <%= f.radio_button :position, "true" %>
+              <%= f.label :管理職 %>
+          </td>
+        </tr>
+        <tr>
+          <th>Eメール</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td><%= f.password_field :password, class:"form-control" %></td>
+        </tr>
+      </table>
+    </div>
   </div>
-
-  <div>
-    <a>名前</a>
-    <%= f.text_field :name %>
+  <div class="row">
+    <div class="mx-auto col-2">
+      <%= f.submit "新規登録", class:"btn btn-info" %>
+      <% end %>
+    </div>
   </div>
-
-  <div>
-    <a>役職</a>
-    <%= f.radio_button :position, "false" %>
-    <%= f.label :一般職 %>
-    <%= f.radio_button :position, "true" %>
-    <%= f.label :管理職 %>
-  </div>
-  
-  <div>
-    <a>メール</a>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div>
-    <a>パスワード</a>
-    <%= f.password_field :password %>
-  </div>
-
-
-  <%= f.submit "新規登録" %>
-
-<% end %>
+</div>

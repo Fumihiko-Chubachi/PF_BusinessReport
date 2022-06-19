@@ -1,27 +1,39 @@
-<h2>ユーザーログイン</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :社員コード %><br />
-    <%= f.text_field :employee_code, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row my-5">
+    <div class="mx-auto col-4">
+      <h2 class="d-flex align-items-center justify-content-center">ユーザーログイン</h2>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= link_to "管理者ログイン", new_admin_session_path %>
+  <div class="row">
+    <div class="mx-auto col-4">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="table">
+        <tr>
+          <th><%= f.label :社員コード %></th>
+          <td><%= f.text_field :employee_code, autofocus: true, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :パスワード %></th>
+          <td><%= f.password_field :password, autocomplete: "current-password", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th></th>
+          <td>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div class="row">
+        <div class="mx-auto col-4">
+          <%= f.submit "ログイン", class:"btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>

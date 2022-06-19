@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row my-4">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center">部署名編集フォーム</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-6">
+      <%= form_with url: admin_department_path(@department), model: @department do |f| %>
+        <table class="table table-borderless">
+          <tr>
+            <th><%= f.text_field :name, class:"form-control" %></th>
+            <td><%= f.submit "変更を保存", class:"btn btn-info" %></td>
+          </tr>
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -12,18 +12,45 @@
 
   <body>
     <header class="shadow-lg bg-dark">
-      
-      <nav class="navbar">
-      <% if user_signed_in? %>
-        <%= link_to "ユーザーログアウト", destroy_user_session_path, method: :delete %>
-      <% elsif admin_signed_in? %>
-        <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete %>
-      <% else %>
-        <%= link_to "ホーム", root_path %>
-        <%= link_to "ユーザーログイン", new_user_session_path %>
-        <%= link_to "管理者ログイン", new_admin_session_path %>
-      <% end %>
-      </nav>
+      <div class="container">
+        <nav class="navbar">
+          <ul class="nav navbar-right text-right">
+            <%= image_tag('logo_s.png') %>
+            <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= link_to "新規業務依頼", public_new_select_department_work_path, class:"btn btn-info" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link mx-2 text-white" do %>
+                  <span><i class="fas fa-sign-out-alt"></i> ログアウト </span>
+                <% end %>
+              </li>
+            <% elsif admin_signed_in? %>
+              <li>
+                <%= link_to admin_users_path, class:"btn btn-info mx-2" do %>
+                  <span><i class="fas fa-users"></i> 社員一覧 </span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_departments_path, class:"btn btn-info mx-2" do %>
+                  <span><i class="fas fa-bookmark"></i> 部署一覧 </span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link mx-2 text-white" do %>
+                  <span><i class="fas fa-sign-out-alt"></i> ログアウト </span>
+                <% end %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to new_admin_session_path, class:"nav-link mx-2 text-white" do %>
+                  <span><i class="fas fa-sign-in-alt"></i> 管理者ログイン </span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
     </header>
     <%= yield %>
   </body>

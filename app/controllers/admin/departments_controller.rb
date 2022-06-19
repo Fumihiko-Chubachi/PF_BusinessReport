@@ -6,6 +6,7 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def edit
+    @department = Department.find(params[:id])
   end
 
   def create
@@ -15,6 +16,9 @@ class Admin::DepartmentsController < ApplicationController
   end
 
   def update
+    @department = Department.find(params[:id])
+    @department.update(department_params)
+    redirect_to admin_departments_path
   end
 
   private

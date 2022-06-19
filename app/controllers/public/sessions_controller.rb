@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
   end
 
   def after_sign_in_path_for(resource)
-	  root_path
+	  public_works_path
   end
 
   # GET /resource/sign_in

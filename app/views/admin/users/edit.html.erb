@@ -1,1 +1,45 @@
-<h1>User Edit</h1>
+<div class="container">
+  <div class="row my-5">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center"><%= @user.name %>さんの社員情報 編集</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-6">
+      <%= form_with url: admin_user_path(@user), model: @user, method: :patch do |f| %>
+      <table class="table">
+        <tr>
+          <th>社員コード</th>
+          <td><%= f.text_field :employee_code, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>部署</th>
+          <td><%= f.collection_select :department_id, Department.all, :id, :name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= f.text_field :name, class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>Eメール</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %></td>
+        </tr>
+        <tr>
+          <th>会員ステータス</th>
+          <td>
+            <%= f.radio_button :position, "false" %>
+              <%= f.label :一般職, class:"mr-4" %>
+            <%= f.radio_button :position, "true" %>
+              <%= f.label :管理職 %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-3">
+      <%= f.submit "編集内容を保存する", class:"btn btn-info col-12" %>
+      <% end %>
+    </div>
+  </div>
+</div>

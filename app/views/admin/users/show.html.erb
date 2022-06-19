@@ -1,1 +1,39 @@
-<h1>User Show</h1>
+<div class="container">
+  <div class="row my-5">
+    <div class="mx-auto col-12">
+      <h2 class="d-flex align-items-center justify-content-center">社員情報 詳細</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto col-4">
+      <table class="table">
+        <tr>
+          <th>社員コード</th>
+          <td><%= @user.employee_code %></td>
+        </tr>
+        <tr>
+          <th>部署</th>
+          <td><%= @user.department.name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>Eメール</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>役職</th>
+          <td>
+            <% if @user.position == false %>
+              一般職
+            <% else %>
+              管理職
+            <% end %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,11 @@
       <%= render 'public/works/sidebar' %>
     </div>
     <div class="col-md-10">
+      <div class="row">
+        <div class="col-4 m-4">
+          
+        </div>
+      </div>
       <h1>依頼中の業務</h1>
         <% @works.each do |work| %>
           <%= link_to work.title, public_work_path(work.id) %>
