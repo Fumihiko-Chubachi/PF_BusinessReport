@@ -6,26 +6,33 @@
     <div class="col-md-10">
       <table class="table">
         <tr>
-          <th class="col-3">【件名】</th>
-          <td class="col-9"><%= @work.title %></td>
+          <th class="col-2">【件名】</th>
+          <td class="col-10"><%= @work.title %></td>
         </tr>
         <tr>
-          <th class="col-3">【目的】</th>
-          <td class="col-9"><%= @work.purpose %></td>
+          <th class="col-2">【目的】</th>
+          <td class="col-10"><%= @work.purpose %></td>
         </tr>
         <tr>
-          <th class="col-3">【背景】</th>
-          <td class="col-9"><%= @work.background %></td>
+          <th class="col-2">【背景】</th>
+          <td class="col-10"><%= @work.background %></td>
         </tr>
         <tr>
-          <th class="col-3">【内容】</th>
-          <td class="col-9"><%= @work.body %></td>
+          <th class="col-2">【内容】</th>
+          <td class="col-10"><%= @work.body %></td>
         </tr>
       </table>
 
       <div>
-        <% if @work.to_user_id == current_user %>
-          あああ
+        to_user_id<%= @work.to_user_id %>
+        current_user.id<%= current_user.id %>
+        <% if @work.to_user_id == current_user.id %>
+
+          <%= form_with model: @work, url: public_work_path(@work) do |f| %>
+            <%= f.select :progress_status, Work.progress_statuses.keys.map {|k| [I18n.t("enums.work.progress_status.#{k}"), k]} %>
+            <%= f.submit "進捗ステータスを更新" %>
+          <% end %>
+
         <% end %>
       </div>
 

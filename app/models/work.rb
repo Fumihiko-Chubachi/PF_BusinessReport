@@ -4,5 +4,5 @@ class Work < ApplicationRecord
 
   has_many :work_comments, dependent: :destroy
   belongs_to :user
-
+  
 end

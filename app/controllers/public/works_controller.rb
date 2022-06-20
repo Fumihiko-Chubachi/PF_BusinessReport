@@ -21,6 +21,15 @@ class Public::WorksController < ApplicationController
     redirect_to public_user_path(current_user.id)
   end
 
+  def update
+    @work = Work.find(params[:id])
+    if @work.update(work_params)
+      redirect_to request.referer
+    else
+      render :show
+    end
+  end
+
   private
 
   def work_params
