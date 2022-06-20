@@ -2,10 +2,13 @@
   <i class="fas fa-bookmark"></i> <%= current_user.department.name %>
 </div>
 <div class="mt-2">
+  <i class="fab fa-gg"></i> <%= current_user.employee_code %>
+</div>
+<div class="mt-2">
   <i class="fas fa-user"></i> <%= current_user.name %>
 </div>
 <div class="mt-4">
-  <%= link_to public_works_path, class:"text-dark" do  %>
+  <%= link_to public_user_path(current_user.id), class:"text-dark" do  %>
     <span><i class="fas fa-envelope"></i> Works </span>
   <% end %>
 </div>
