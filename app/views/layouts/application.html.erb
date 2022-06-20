@@ -18,7 +18,7 @@
             <%= image_tag('logo_s.png') %>
             <% if user_signed_in? %>
               <li class="nav-item">
-                <%= link_to "業務依頼一覧", public_user_path((current_user.id)), class:"btn btn-info mx-2" %>
+                <%= link_to "業務依頼一覧", public_user_path(current_user.id), class:"btn btn-info mx-2" %>
               </li>
               <li class="nav-item">
                 <%= link_to "新規業務依頼", public_new_select_department_work_path, class:"btn btn-info mx-2" %>

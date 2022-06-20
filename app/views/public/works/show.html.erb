@@ -24,6 +24,12 @@
       </table>
 
       <div>
+        <% if @work.to_user_id == current_user %>
+          あああ
+        <% end %>
+      </div>
+
+      <div>
         <%= render "public/work_comments/index", work: @work %>
         <%= render "public/work_comments/form", work: @work, work_comment: @work_comment %>
       </div>

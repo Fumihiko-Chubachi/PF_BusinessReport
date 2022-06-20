@@ -18,13 +18,13 @@ class Public::WorksController < ApplicationController
     @work = Work.new(work_params)
     @work.user_id = current_user.id
     @work.save
-    redirect_to public_works_path
+    redirect_to public_user_path(current_user.id)
   end
 
   private
 
   def work_params
-    params.require(:work).permit(:from_user_id, :to_user_id, :title, :purpose, :background, :body, :progress_status)
+    params.require(:work).permit(:user_id, :to_user_id, :title, :purpose, :background, :body, :progress_status)
   end
 
 end
