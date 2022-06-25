@@ -11,14 +11,22 @@ class Admin::DepartmentsController < ApplicationController
 
   def create
     @department = Department.new(department_params)
-    @department.save
-    redirect_to admin_departments_path
+    if @department.save
+      redirect_to admin_departments_path
+    else
+      flash[:notice]="空欄で登録は出来ません。"
+      redirect_to request.referer
+    end
   end
 
   def update
     @department = Department.find(params[:id])
-    @department.update(department_params)
-    redirect_to admin_departments_path
+    if @department.update(department_params)
+      redirect_to admin_departments_path
+    else
+      flash[:notice]="空欄で保存は出来ません。"
+      redirect_to request.referer
+    end
   end
 
   private

@@ -4,5 +4,10 @@ class Work < ApplicationRecord
 
   has_many :work_comments, dependent: :destroy
   belongs_to :user
-  
+
+  validates :title, presence: true
+  validates :purpose, presence: true
+  validates :background, presence: true
+  validates :body, presence: true
+
 end

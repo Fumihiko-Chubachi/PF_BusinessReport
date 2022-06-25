@@ -13,12 +13,20 @@ class Public::WorksController < ApplicationController
     @work = Work.find(params[:id])
     @work_comment = WorkComment.new
   end
+  
+  def edit
+    @work = Work.find(params[:id])
+  end
 
   def create
     @work = Work.new(work_params)
     @work.user_id = current_user.id
-    @work.save
-    redirect_to public_user_path(current_user.id)
+    if @work.save
+       redirect_to public_user_path(current_user.id)
+    else
+       flash[:notice]="空欄の箇所があります。"
+       redirect_to request.referer
+    end
   end
 
   def update
@@ -26,8 +34,15 @@ class Public::WorksController < ApplicationController
     if @work.update(work_params)
       redirect_to request.referer
     else
-      render :show
+      flash[:notice]="空欄の箇所があります。"
+      redirect_to request.referer
     end
+  end
+
+  def destroy
+    @work = Work.find(params[:id])
+    @work.delete
+    redirect_to public_user_path(current_user.id)
   end
 
   private

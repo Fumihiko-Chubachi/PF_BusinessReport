@@ -1,13 +1,15 @@
-<table>
+<div>
   <%= form_with(model:[work, work_comment], url:public_work_comments_path, local: true) do |f| %>
-    <tr>
-      <td class="col-11">
-        <%= f.text_area :comment, class:"form-control" %>
+    <div class="row">
+      <div class="col-12">
+        <%= f.text_area :comment, class:"form-control" , rows: 5 %>
         <%= f.hidden_field :work_id, value: work.id %>
-      </td>
-      <td class="col-1">
-        <%= f.submit "送信する", class:"btn btn-primary " %>
-      </td>
-    </tr>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="col-12 text-right">
+        <%= f.submit "コメントを送信する", class:"btn btn-primary m-1" %>
+      </div>
+    </div>
   <% end %>
-</table>
+</div>

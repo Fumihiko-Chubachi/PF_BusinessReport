@@ -7,7 +7,8 @@ class Public::WorkCommentsController < ApplicationController
     if work_comment.save
       redirect_to request.referer
     else
-      render '/public/works/id'
+      flash[:notice]="コメントは空欄に出来ません。"
+      redirect_to request.referer
     end
   end
 

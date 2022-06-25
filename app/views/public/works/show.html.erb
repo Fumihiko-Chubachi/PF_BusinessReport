@@ -1,10 +1,29 @@
 <div class="container">
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error' %>
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-2">
       <%= render 'public/works/sidebar' %>
     </div>
-    <div class="col-md-10">
+    <div class="col-10 mt-4">
+      <% if @work.user_id == current_user.id %>
+        <div class="text-right">
+          <!--編集リンク-->
+          <%= link_to "編集する", edit_public_work_path(@work), class:"btn btn-sm btn-outline-success m-1" %>
+          <!--削除リンク-->
+          <%= link_to "削除する", public_work_path(@work), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger m-1" %>
+        </div>
+      <% end %>
       <table class="table">
+        <tr>
+          <% if @work.user_id == current_user.id %>
+            <th class="col-2">【宛先】</th>
+            <!--<td class="col-10"></%= @work.to_user.department.name %></%= @work.to_user_id %></td>-->
+          <% else %>
+            <th class="col-2">【差出人】</th>
+            <td class="col-10"><%= @work.user.department.name %>　<%= @work.user.name %></td>
+          <% end %>
+        </tr>
         <tr>
           <th class="col-2">【件名】</th>
           <td class="col-10"><%= @work.title %></td>
@@ -22,25 +41,20 @@
           <td class="col-10"><%= @work.body %></td>
         </tr>
       </table>
-
-      <div>
-        to_user_id<%= @work.to_user_id %>
-        current_user.id<%= current_user.id %>
+      <!--ステータス変更機能-->
+      <div class="ml-4">
         <% if @work.to_user_id == current_user.id %>
-
           <%= form_with model: @work, url: public_work_path(@work) do |f| %>
             <%= f.select :progress_status, Work.progress_statuses.keys.map {|k| [I18n.t("enums.work.progress_status.#{k}"), k]} %>
-            <%= f.submit "進捗ステータスを更新" %>
+            <%= f.submit "進捗ステータスを更新", class:"btn btn-primary py-1" %>
           <% end %>
-
         <% end %>
       </div>
-
+      <!--コメント機能-->
       <div>
         <%= render "public/work_comments/index", work: @work %>
         <%= render "public/work_comments/form", work: @work, work_comment: @work_comment %>
       </div>
-
     </div>
   </div>
 </div>

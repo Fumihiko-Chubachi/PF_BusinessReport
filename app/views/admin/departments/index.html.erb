@@ -1,6 +1,9 @@
 <div class="container">
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error' %>
   <div class="row my-5">
     <div class="mx-auto col-6">
+      <!--部署新規作成機能-->
       <h2 class="d-flex align-items-center justify-content-center">部署一覧・追加</h2>
       <%= form_with url: admin_departments_path(@department), model: @department do |f| %>
         <table class="table">
@@ -12,6 +15,7 @@
       <% end %>
     </div>
     <div class="mx-auto col-6 mt-5">
+      <!--部署一覧-->
       <table class="table">
         <% @departments.each do |department| %>
           <tr>

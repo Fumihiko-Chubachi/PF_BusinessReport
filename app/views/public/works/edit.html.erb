@@ -3,16 +3,16 @@
   <%= render 'layouts/error' %>
   <div class="row mt-4 mb-3">
     <div class="mx-auto col-12">
-      <h2 class="d-flex align-items-center justify-content-center">新規業務依頼入力フォーム</h2>
+      <h2 class="d-flex align-items-center justify-content-center">業務依頼編集フォーム</h2>
     </div>
   </div>
   <div class="row">
     <div class="mx-auto col-8">
-      <%= form_with model: @work, url:public_works_path do |f| %>
+      <%= form_with model: @work, url:public_work_path do |f| %>
       <table class="table">
         <tr>
           <th>宛名</th>
-          <td><%= f.collection_select :to_user_id, @target_user, :id, :name %></td>
+          <td></td>
         </tr>
         <tr>
           <th>件名</th>
@@ -36,7 +36,7 @@
   <div class="row">
     <div class="mx-auto col-2">
       <div>
-        <%= f.submit "送信", class:"btn btn-info col-12" %>
+        <%= f.submit "編集内容を保存する", class:"btn btn-info col-12" %>
         <% end %>
       </div>
     </div>

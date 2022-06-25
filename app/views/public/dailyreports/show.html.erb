@@ -3,9 +3,25 @@
     <div class="col-2">
       <%= render 'public/works/sidebar' %>
     </div>
-    <div class="col-10">
+    <div class="col-10 mt-4">
       <h1>業務日報</h1>
+      <% if @dailyreport.user_id == current_user.id %>
+        <div class="text-right">
+          <!--編集リンク-->
+          <%= link_to "編集する", edit_public_dailyreport_path(@dailyreport), class:"btn btn-sm btn-outline-success m-1" %>
+          <!--削除リンク-->
+          <%= link_to "削除する", public_dailyreport_path(@dailyreport), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-sm btn-outline-danger m-1" %>
+        </div>
+      <% end %>
       <table class="table">
+        <tr>
+          <th>所属</th>
+          <td><%= @dailyreport.user.department.name %></td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td><%= @dailyreport.user.name %></td>
+        </tr>
         <tr>
           <th class="col-3">今日の目標</th>
           <td class="col-9"><%= @dailyreport.objective %></td>

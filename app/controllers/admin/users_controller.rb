@@ -18,8 +18,12 @@ class Admin::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.save
-    redirect_to admin_users_path
+    if @user.save
+      redirect_to admin_users_path
+    else
+      flash[:notice]="空欄で登録は出来ません。"
+      redirect_to request.referer
+    end
   end
 
   def update
@@ -27,7 +31,8 @@ class Admin::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to admin_user_path(@user)
     else
-      render :edit
+      flash[:notice]="空欄で保存は出来ません。"
+      redirect_to request.referer
     end
   end
 

@@ -4,80 +4,137 @@
       <%= render 'public/works/sidebar' %>
     </div>
     <div class="col-5">
-      <h3 class="mt-5 mb-2 mx-2">依頼中の業務</h3>
-      <% @works.each do |work| %>
-        <div class="ml-4">
-          <%= link_to work.title, public_work_path(work.id) %>
-        </div>
-      <% end %>
-    </div>
-      <div class="col-5">
-      
-      <% if @work_unanswered.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">未回答の業務</h3>
-        <% @work_unanswered.each do |work| %>
-          <div class="ml-4">
+      <h1 class="mt-4">送信ボックス</h1>
+      <!--送信側の未回答ステータス業務-->
+      <% if @work_user_unanswered.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">未回答の業務</h3>
+        <% @work_user_unanswered.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-      
-      <% if @work_checking.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">確認中の業務</h3>
-        <% @work_checking.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の確認中ステータス業務-->
+      <% if @work_user_checking.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">確認中の業務</h3>
+        <% @work_user_checking.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-      
-      <% if @work_examination.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">検討中の業務</h3>
-        <% @work_examination.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の検討中ステータス業務-->
+      <% if @work_user_examination.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">検討中の業務</h3>
+        <% @work_user_examination.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-
-      <% if @work_possible.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">実施可の業務</h3>
-        <% @work_possible.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の実施可ステータス業務-->
+      <% if @work_user_possible.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施可の業務</h3>
+        <% @work_user_possible.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-      
-      <% if @work_impossible.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">実施不可</h3>
-        <% @work_impossible.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の実施不可ステータス業務-->
+      <% if @work_user_impossible.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施不可</h3>
+        <% @work_user_impossible.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-      
-      <% if @work_in_progress.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">実施中の業務</h3>
-        <% @work_in_progress.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の実施中ステータス業務-->
+      <% if @work_user_in_progress.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施中の業務</h3>
+        <% @work_user_in_progress.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
-      
-      <% if @work_completion.size > 0 %>
-        <h3 class="mt-5 mb-2 mx-2">実施済の業務</h3>
-        <% @work_completion.each do |work| %>
-          <div class="ml-4">
+      <!--送信側の実施済ステータス業務-->
+      <% if @work_user_completion.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施済の業務</h3>
+        <% @work_user_completion.each do |work| %>
+          <div class="ml-5">
             <%= link_to work.title, public_work_path(work.id) %>
           </div>
         <% end %>
       <% end %>
     </div>
- 
-      
+    
+    <div class="col-5">
+      <h1 class="mt-4">受信ボックス</h1>
+      <!--受信側の未回答ステータス業務-->
+      <% if @work_to_user_unanswered.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">未回答の業務</h3>
+        <% @work_to_user_unanswered.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の確認中ステータス業務-->
+      <% if @work_to_user_checking.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">確認中の業務</h3>
+        <% @work_to_user_checking.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の検討中ステータス業務-->
+      <% if @work_to_user_examination.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">検討中の業務</h3>
+        <% @work_to_user_examination.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の実施可ステータス業務-->
+      <% if @work_to_user_possible.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施可の業務</h3>
+        <% @work_to_user_possible.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の実施不可ステータス業務-->
+      <% if @work_to_user_impossible.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施不可</h3>
+        <% @work_to_user_impossible.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の実施中ステータス業務-->
+      <% if @work_to_user_in_progress.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施中の業務</h3>
+        <% @work_to_user_in_progress.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
+      <!--受信側の実施済ステータス業務-->
+      <% if @work_to_user_completion.size > 0 %>
+        <h3 class="mt-3 mb-2 ml-3">実施済の業務</h3>
+        <% @work_to_user_completion.each do |work| %>
+          <div class="ml-5">
+            <%= link_to work.title, public_work_path(work.id) %>
+          </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

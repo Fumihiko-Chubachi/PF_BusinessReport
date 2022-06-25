@@ -1,16 +1,25 @@
 class Public::UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    @works = @user.works
-    @work = Work.where(to_user_id: current_user.id)
-    @work_unanswered = @work.unanswered
-    @work_checking = @work.checking
-    @work_examination = @work.examination
-    @work_possible = @work.possible
-    @work_impossible = @work.impossible
-    @work_in_progress = @work.in_progress
-    @work_completion = @work.completion
+    #user_idカラム絞り込みのインスタンス変数
+    @work_user = Work.where(user_id: current_user.id)
+    @work_user_unanswered = @work_user.unanswered
+    @work_user_checking = @work_user.checking
+    @work_user_examination = @work_user.examination
+    @work_user_possible = @work_user.possible
+    @work_user_impossible = @work_user.impossible
+    @work_user_in_progress = @work_user.in_progress
+    @work_user_completion = @work_user.completion
+
+    #to_user_idカラム絞り込みのインスタンス変数
+    @work_to_user = Work.where(to_user_id: current_user.id)
+    @work_to_user_unanswered = @work_to_user.unanswered
+    @work_to_user_checking = @work_to_user.checking
+    @work_to_user_examination = @work_to_user.examination
+    @work_to_user_possible = @work_to_user.possible
+    @work_to_user_impossible = @work_to_user.impossible
+    @work_to_user_in_progress = @work_to_user.in_progress
+    @work_to_user_completion = @work_to_user.completion
   end
 
   private

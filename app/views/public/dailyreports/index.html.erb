@@ -4,11 +4,53 @@
       <%= render 'public/works/sidebar' %>
     </div>
   <div class="col-10">
-    <h1>業務日報一覧</h1>
-    <% @dailyreports.each do |dailyreport| %>
-      <div>
-        <%= link_to dailyreport.created_at.strftime('%Y/%m/%d'), public_dailyreport_path(dailyreport.id) %>
-      </div>
+    <h1 class="mt-4">業務日報一覧</h1>
+    <% if current_user.position == false %>
+      <!--一般ユーザーの一覧表示-->
+      <table class="table col-8">
+        <tr>
+          <th>作成日時</th>
+          <th>更新日時</th>
+        </tr>
+        <% @dailyreports.each do |dailyreport| %>
+          <tr>
+            <td>
+              <%= link_to dailyreport.created_at.strftime('%Y/%m/%d'), public_dailyreport_path(dailyreport.id), class:"ml-4" %>
+            </td>
+            <td>
+              <% if dailyreport.created_at == dailyreport.updated_at %>
+                <!--編集していない場合は表記無し-->
+              <% else %>
+                <a class="text-danger"><%= dailyreport.updated_at.strftime('%Y/%m/%d') %></a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    <% else %>
+      <!--管理職ユーザーの一覧表示-->
+      <table class="table col-8">
+          <tr>
+            <th>名前</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+          </tr>
+        <% @dailyreports.each do |dailyreport| %>
+          <tr>
+            <td><%= dailyreport.user.name %></td>
+            <td>
+              <%= link_to dailyreport.created_at.strftime('%Y/%m/%d'), public_dailyreport_path(dailyreport.id), class:"ml-4" %>
+            </td>
+            <td>
+              <% if dailyreport.created_at == dailyreport.updated_at %>
+                <!--編集していない場合は表記無し-->
+              <% else %>
+                <a class="text-danger"><%= dailyreport.updated_at.strftime('%Y/%m/%d') %></a>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
     <% end %>
   </div>
 </div>
