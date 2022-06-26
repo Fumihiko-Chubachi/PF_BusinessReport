@@ -1,18 +1,21 @@
-<table class="table">
-  <% dailyreport.dailyreport_comments.each do |dailyreport_comment| %>
-    <tr>
-      <th class="col-3">
-        <span class="mr-2"><%= dailyreport_comment.user.department.name %></span>
-        <span><%= dailyreport_comment.user.name %></span>
-      </th>
-      <td class="col-8">
-        <%= safe_join(dailyreport_comment.comment.split("\n"),tag(:br)) %>
-      </td>
-      <td class="col-1">
-        <% if dailyreport_comment.user == current_user %>
-            <%= link_to "削除", public_dailyreport_comment_path(dailyreport_comment), method: :delete %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div>
+  <table class="table">
+    <h6 class="ml-2">コメント一覧</h6>
+    <% dailyreport.dailyreport_comments.each do |dailyreport_comment| %>
+      <tr>
+        <th class="col-3">
+          <span class="mr-2"><%= dailyreport_comment.user.department.name %></span>
+          <span><%= dailyreport_comment.user.name %></span>
+        </th>
+        <td class="col-8">
+          <%= safe_join(dailyreport_comment.comment.split("\n"),tag(:br)) %>
+        </td>
+        <td class="col-1">
+          <% if dailyreport_comment.user == current_user %>
+              <%= link_to "削除", public_dailyreport_comment_path(dailyreport_comment), method: :delete, class:"btn btn-sm btn-outline-danger" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

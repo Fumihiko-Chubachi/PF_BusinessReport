@@ -1,4 +1,5 @@
 class Public::WorksController < ApplicationController
+  before_action :authenticate_user!
 
   def department
     @departments = Department.all

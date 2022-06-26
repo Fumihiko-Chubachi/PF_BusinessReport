@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,12 +13,9 @@
     <header class="shadow-lg bg-dark">
       <div class="container">
         <nav class="navbar">
+          <%= image_tag('logo_s.png') %>
           <ul class="nav navbar-right text-right">
-            <%= image_tag('logo_s.png') %>
             <% if user_signed_in? %>
-              <li class="nav-item">
-                <%= link_to "　業務一覧　", public_user_path(current_user.id), class:"btn btn-info mx-2",data: {"turbolinks"=>false} %>
-              </li>
               <li class="nav-item">
                 <%= link_to "新規業務依頼", public_new_select_department_work_path, class:"btn btn-info mx-2" %>
               </li>
@@ -27,7 +23,7 @@
                 <%= link_to "　日報投稿　", new_public_dailyreport_path, class:"btn btn-info mx-2" %>
               </li>
               <li class="nav-item">
-                <%= link_to destroy_user_session_path, method: :delete, class:"nav-link mx-2 text-white" do %>
+                <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-danger mx-2 text-white" do %>
                   <span><i class="fas fa-sign-out-alt"></i> ログアウト </span>
                 <% end %>
               </li>
@@ -43,7 +39,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to destroy_admin_session_path, method: :delete, class:"nav-link mx-2 text-white" do %>
+                <%= link_to destroy_admin_session_path, method: :delete, class:"btn btn-danger mx-2 text-white" do %>
                   <span><i class="fas fa-sign-out-alt"></i> ログアウト </span>
                 <% end %>
               </li>

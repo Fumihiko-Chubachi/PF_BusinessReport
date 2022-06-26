@@ -1,4 +1,5 @@
 class Public::DailyreportCommentsController < ApplicationController
+  before_action :authenticate_user!
   
   def create
     dailyreport = Dailyreport.find(dailyreport_comment_params[:dailyreport_id])

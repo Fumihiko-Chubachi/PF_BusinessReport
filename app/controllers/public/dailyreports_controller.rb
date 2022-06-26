@@ -1,4 +1,5 @@
 class Public::DailyreportsController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @dailyreport = Dailyreport.new

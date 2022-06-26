@@ -12,7 +12,7 @@
         </td>
         <td class="col-1">
           <% if work_comment.user == current_user %>
-              <%= link_to "削除", public_work_comment_path(work_comment), method: :delete %>
+              <%= link_to "削除", public_work_comment_path(work_comment), method: :delete, class:"btn btn-sm btn-outline-danger" %>
           <% end %>
         </td>
       </tr>

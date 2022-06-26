@@ -1,4 +1,5 @@
 class Public::WorkCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     work = Work.find(work_comment_params[:work_id])

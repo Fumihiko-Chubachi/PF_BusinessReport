@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     #user_idカラム絞り込みのインスタンス変数
