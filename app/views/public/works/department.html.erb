@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto col-3">
+    <div class="btn_custom mx-auto col-3">
       <%= form_with url:new_public_work_path, method: :get do |f| %>
       <table class="table">
         <tr>
@@ -13,12 +13,8 @@
           <td class="col-6"><%= f.collection_select :target_department, @departments, :id, :name %></td>
         </tr>
       </table>
+      <%= f.submit "入力画面へ", class:"btn btn-info col-6" %>
+      <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="mx-auto col-2">
-      <%= f.submit "入力画面へ", class:"btn btn-info col-12" %>
-    </div>
-  </div>
-  <% end %>
 </div>

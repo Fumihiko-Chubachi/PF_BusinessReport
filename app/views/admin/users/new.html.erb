@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto col-6">
+    <div class="btn_custom mx-auto col-6">
       <%= form_with model: @user, url:admin_users_path do |f| %>
       <table class="table">
         <tr>
@@ -40,10 +40,6 @@
           <td><%= f.password_field :password, class:"form-control" %></td>
         </tr>
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto col-2">
       <%= f.submit "新規登録", class:"btn btn-info" %>
       <% end %>
     </div>

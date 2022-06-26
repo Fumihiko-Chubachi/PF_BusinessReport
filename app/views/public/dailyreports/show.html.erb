@@ -1,4 +1,6 @@
 <div class="container">
+  <!--エラーメッセージ-->
+  <%= render 'layouts/error' %>
   <div class="row">
     <div class="col-2">
       <%= render 'public/works/sidebar' %>
@@ -24,21 +26,23 @@
         </tr>
         <tr>
           <th class="col-3">今日の目標</th>
-          <td class="col-9"><%= @dailyreport.objective %></td>
+          <td class="col-9"><%= safe_join(@dailyreport.objective.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th class="col-3">業務概要（実績等）</th>
-          <td class="col-9"><%= @dailyreport.summary %></td>
+          <td class="col-9"><%= safe_join(@dailyreport.summary.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th class="col-3">反省・問題点</th>
-          <td class="col-9"><%= @dailyreport.introspection %></td>
+          <td class="col-9"><%= safe_join(@dailyreport.introspection.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th class="col-3">明日の目標・改善点</th>
-          <td class="col-9"><%= @dailyreport.improvement %></td>
+          <td class="col-9"><%= safe_join(@dailyreport.improvement.split("\n"),tag(:br)) %></td>
         </tr>
       </table>
+      <%= render "public/dailyreport_comments/index", dailyreport: @dailyreport %>
+      <%= render "public/dailyreport_comments/form", dailyreport: @dailyreport, dailyreport_comment: @dailyreport_comment %>
     </div>
   </div>
 </div>

@@ -13,7 +13,6 @@ class User < ApplicationRecord
   validates :password, presence: true
   validates :department_id, presence: true
   validates :employee_code, presence: true
-  validates :position, presence: true
   validates :email, presence: true
   validates :name, presence: true
 

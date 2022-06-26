@@ -7,14 +7,15 @@ class Public::DailyreportsController < ApplicationController
   def index
     #positionカラムを参照に表示分け
     if current_user.position == false
-      @dailyreports = Dailyreport.where(user_id: current_user.id)
+      @dailyreports = Dailyreport.where(user_id: current_user.id).order("id DESC")
     else
-      @dailyreports = Dailyreport.joins(:user).where(user: {department_id: current_user.department_id})
+      @dailyreports = Dailyreport.joins(:user).where(user: {department_id: current_user.department_id}).order("id DESC")
     end
   end
 
   def show
     @dailyreport = Dailyreport.find(params[:id])
+    @dailyreport_comment = DailyreportComment.new
   end
 
   def edit

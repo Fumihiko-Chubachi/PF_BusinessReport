@@ -7,38 +7,35 @@
     </div>
   </div>
   <div class="row">
-    <div class="mx-auto col-8">
+    <div class="btn_custom mx-auto col-8">
       <%= form_with model: @work, url:public_work_path do |f| %>
       <table class="table">
         <tr>
-          <th>宛名</th>
-          <td></td>
+          <th class="col-2">宛名</th>
+          <td class="col-10">
+            <span class="mr-2"><%= @to_user.department.name %></span>
+            <span><%= @to_user.name %></span>
+          </td>
         </tr>
         <tr>
-          <th>件名</th>
-          <td><%= f.text_field :title, class:"form-control" %></td>
+          <th class="col-2">件名</th>
+          <td class="col-10"><%= f.text_field :title, class:"form-control" %></td>
         </tr>
         <tr>
-          <th>目的</th>
-          <td><%= f.text_area :purpose, class:"form-control", rows: 5 %></td>
+          <th class="col-2">目的</th>
+          <td class="col-10"><%= f.text_area :purpose, class:"form-control", rows: 5 %></td>
         </tr>
         <tr>
-          <th>背景</th>
-          <td><%= f.text_area :background, class:"form-control", rows: 5 %></td>
+          <th class="col-2">背景</th>
+          <td class="col-10"><%= f.text_area :background, class:"form-control", rows: 5 %></td>
         </tr>
         <tr>
-          <th>依頼内容</th>
-          <td><%= f.text_area :body, class:"form-control", rows: 8 %></td>
+          <th class="col-2">依頼内容</th>
+          <td class="col-10"><%= f.text_area :body, class:"form-control", rows: 8 %></td>
         </tr>
       </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto col-2">
-      <div>
-        <%= f.submit "編集内容を保存する", class:"btn btn-info col-12" %>
-        <% end %>
-      </div>
+      <%= f.submit "編集内容を保存する", class:"btn btn-info col-4" %>
+      <% end %>
     </div>
   </div>
 </div>

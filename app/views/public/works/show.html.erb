@@ -18,10 +18,16 @@
         <tr>
           <% if @work.user_id == current_user.id %>
             <th class="col-2">【宛先】</th>
-            <!--<td class="col-10"></%= @work.to_user.department.name %></%= @work.to_user_id %></td>-->
+            <td class="col-10">
+              <span class="mr-2"><%= @to_user.department.name %></span>
+              <span><%= @to_user.name %></span>
+            </td>
           <% else %>
             <th class="col-2">【差出人】</th>
-            <td class="col-10"><%= @work.user.department.name %>　<%= @work.user.name %></td>
+            <td class="col-10">
+              <span class="mr-2"><%= @work.user.department.name %></span>
+              <span><%= @work.user.name %></span>
+            </td>
           <% end %>
         </tr>
         <tr>
@@ -30,15 +36,15 @@
         </tr>
         <tr>
           <th class="col-2">【目的】</th>
-          <td class="col-10"><%= @work.purpose %></td>
+          <td class="col-10"><%= safe_join(@work.purpose.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th class="col-2">【背景】</th>
-          <td class="col-10"><%= @work.background %></td>
+          <td class="col-10"><%= safe_join(@work.background.split("\n"),tag(:br)) %></td>
         </tr>
         <tr>
           <th class="col-2">【内容】</th>
-          <td class="col-10"><%= @work.body %></td>
+          <td class="col-10"><%= safe_join(@work.body.split("\n"),tag(:br)) %></td>
         </tr>
       </table>
       <!--ステータス変更機能-->

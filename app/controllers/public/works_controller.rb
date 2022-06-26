@@ -12,10 +12,12 @@ class Public::WorksController < ApplicationController
   def show
     @work = Work.find(params[:id])
     @work_comment = WorkComment.new
+    @to_user = User.find(@work.to_user_id)
   end
-  
+
   def edit
     @work = Work.find(params[:id])
+    @to_user = User.find(@work.to_user_id)
   end
 
   def create
@@ -32,7 +34,7 @@ class Public::WorksController < ApplicationController
   def update
     @work = Work.find(params[:id])
     if @work.update(work_params)
-      redirect_to request.referer
+      redirect_to public_user_path(current_user.id)
     else
       flash[:notice]="空欄の箇所があります。"
       redirect_to request.referer

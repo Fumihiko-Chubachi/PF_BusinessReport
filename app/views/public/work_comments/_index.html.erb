@@ -1,17 +1,21 @@
-<table class="table">
-  <% work.work_comments.each do |work_comment| %>
-    <tr>
-      <th class="col-3">
-        <%= work_comment.user.department.name %>　<%= work_comment.user.name %>
-      </th>
-      <td class="col-8">
-        <%= work_comment.comment %>
-      </td>
-      <td class="col-1">
-        <% if work_comment.user == current_user %>
-            <%= link_to "削除", public_work_comment_path(work_comment), method: :delete %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<div>
+  <table class="table">
+    <h6 class="ml-2">コメント一覧</h6>
+    <% work.work_comments.each do |work_comment| %>
+      <tr>
+        <th class="col-3">
+          <span class="mr-2"><%= work_comment.user.department.name %></span>
+          <span><%= work_comment.user.name %></span>
+        </th>
+        <td class="col-8">
+          <%= safe_join(work_comment.comment.split("\n"),tag(:br)) %>
+        </td>
+        <td class="col-1">
+          <% if work_comment.user == current_user %>
+              <%= link_to "削除", public_work_comment_path(work_comment), method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

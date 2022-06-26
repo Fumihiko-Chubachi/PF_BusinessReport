@@ -1,0 +1,15 @@
+<div>
+  <%= form_with(model:[dailyreport, dailyreport_comment], url:public_dailyreport_comments_path, local: true) do |f| %>
+    <div class="row">
+      <div class="col-12">
+        <%= f.text_area :comment, class:"form-control" , rows: 5 %>
+        <%= f.hidden_field :dailyreport_id, value: dailyreport.id %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-right">
+        <%= f.submit "コメントを送信する", class:"btn btn-primary m-1" %>
+      </div>
+    </div>
+  <% end %>
+</div>

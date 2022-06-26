@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="row">
-    <dvi class="mx-auto col-10">
+    <div class="btn_custom mx-auto col-10">
       <%= form_with model: @dailyreport, url:public_dailyreports_path do |f| %>
       <table class="table">
         <tr>
@@ -35,11 +35,7 @@
           <td class="col-9"><%= f.text_area :improvement, class:"form-control", rows: 4 %></td>
         </tr>
       </table>
-    </dvi>
-  </div>
-  <div class="row">
-    <div class="mx-auto col-3">
-      <%= f.submit "送信", class:"btn btn-info col-12" %>
+      <%= f.submit "送信", class:"btn btn-info col-3" %>
       <% end %>
     </div>
   </div>
