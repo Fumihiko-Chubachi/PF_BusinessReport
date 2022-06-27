@@ -34,7 +34,8 @@
 ・日報報告  
 
 ## 設計書
-<...>
+テーブル定義書  
+  ・https://docs.google.com/spreadsheets/d/1OrFSNFs1KkzEiI9ut14j-RtmKPcYx9x5zWDPF6fF0GU/edit#gid=1373217982  
 
 ## 開発環境
 - OS：Linux(CentOS)
