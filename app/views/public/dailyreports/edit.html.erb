@@ -34,6 +34,10 @@
           <th class="col-3">明日の目標・改善点</th>
           <td class="col-9"><%= f.text_area :improvement, class:"form-control", rows: 4 %></td>
         </tr>
+        <tr>
+          <th class="col-3">明日の目標・改善点</th>
+          <td class="col-9"><%= f.text_area :impression, class:"form-control", rows: 4 %></td>
+        </tr>
       </table>
       <%= f.submit "編集内容を保存する", class:"btn btn-info col-4" %>
       <% end %>

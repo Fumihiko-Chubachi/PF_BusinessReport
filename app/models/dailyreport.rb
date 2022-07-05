@@ -7,5 +7,6 @@ class Dailyreport < ApplicationRecord
   validates :summary, presence: true
   validates :introspection, presence: true
   validates :improvement, presence: true
+  validates :impression, presence: true
 
 end

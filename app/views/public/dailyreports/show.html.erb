@@ -17,30 +17,52 @@
       <% end %>
       <table class="table">
         <tr>
-          <th>所属</th>
-          <td><%= @dailyreport.user.department.name %></td>
+          <th class="col-3">所属</th>
+          <td class="col-8"><%= @dailyreport.user.department.name %></td>
+          <td class="col-1"><!--空タブ--></td>
         </tr>
         <tr>
-          <th>氏名</th>
-          <td><%= @dailyreport.user.name %></td>
+          <th class="col-3">氏名</th>
+          <td class="col-8"><%= @dailyreport.user.name %></td>
+          <td class="col-1"><!--空タブ--></td>
         </tr>
         <tr>
           <th class="col-3">今日の目標</th>
-          <td class="col-9"><%= safe_join(@dailyreport.objective.split("\n"),tag(:br)) %></td>
+          <td class="col-8"><%= safe_join(@dailyreport.objective.split("\n"),tag(:br)) %></td>
+          <td class="col-1"><!--空タブ--></td>
+          <td></td>
         </tr>
         <tr>
           <th class="col-3">業務概要（実績等）</th>
-          <td class="col-9"><%= safe_join(@dailyreport.summary.split("\n"),tag(:br)) %></td>
+          <td class="col-8"><%= safe_join(@dailyreport.summary.split("\n"),tag(:br)) %></td>
+          <td class="col-1"><!--空タブ--></td>
         </tr>
         <tr>
           <th class="col-3">反省・問題点</th>
-          <td class="col-9"><%= safe_join(@dailyreport.introspection.split("\n"),tag(:br)) %></td>
+          <td class="col-8"><%= safe_join(@dailyreport.introspection.split("\n"),tag(:br)) %></td>
+          <td class="col-1"><!--空タブ--></td>
         </tr>
         <tr>
           <th class="col-3">明日の目標・改善点</th>
-          <td class="col-9"><%= safe_join(@dailyreport.improvement.split("\n"),tag(:br)) %></td>
+          <td class="col-8"><%= safe_join(@dailyreport.improvement.split("\n"),tag(:br)) %></td>
+          <td class="col-1"><!--空タブ--></td>
+        </tr>
+        <tr>
+          <th class="col-3">所感</th>
+          <td class="col-8"><%= safe_join(@dailyreport.impression.split("\n"),tag(:br)) %></td>
+          <td class="col-1">
+            <% if current_user.position == true %>
+              [<%= @dailyreport.score %>]
+            <% end %>
+          </td>
         </tr>
       </table>
+      <% if current_user.position == true %>
+        <div>
+          <p class="ml-3 mb-0 text-success">※管理者ユーザーは所感欄に感情スコアが表示されます（-10～10,10に近い程ポジティブな感情)</p>
+          <p class="ml-3 text-success">　メンタルヘルスにご活用ください。</p>
+        </div>
+      <% end %>
       <%= render "public/dailyreport_comments/index", dailyreport: @dailyreport %>
       <%= render "public/dailyreport_comments/form", dailyreport: @dailyreport, dailyreport_comment: @dailyreport_comment %>
     </div>

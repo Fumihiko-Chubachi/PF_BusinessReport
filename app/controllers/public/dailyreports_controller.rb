@@ -25,6 +25,8 @@ class Public::DailyreportsController < ApplicationController
 
   def create
     @dailyreport = Dailyreport.new(dailyreport_params)
+    @dailyreport.score = Language.get_data(dailyreport_params[:impression]) #感情分析スコア
+    
     @dailyreport.user_id = current_user.id
     if @dailyreport.save
       redirect_to public_dailyreports_path
@@ -53,7 +55,7 @@ class Public::DailyreportsController < ApplicationController
   private
 
   def dailyreport_params
-    params.require(:dailyreport).permit(:user_id, :objective, :summary, :introspection, :improvement)
+    params.require(:dailyreport).permit(:user_id, :objective, :summary, :introspection, :improvement, :impression)
   end
 
 end
