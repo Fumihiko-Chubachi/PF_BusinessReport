@@ -34,7 +34,9 @@
 ・日報報告  
 
 ## 設計書
-<...>
+・テーブル定義書：https://docs.google.com/spreadsheets/d/1OrFSNFs1KkzEiI9ut14j-RtmKPcYx9x5zWDPF6fF0GU/edit#gid=1373217982  
+・詳細設計：https://docs.google.com/spreadsheets/d/1tVFyNZfWqRALyLduHTFL8xoyJWALc6YjlFRR1NriSxM/edit#gid=1952791304  
+・ER図：https://app.diagrams.net/#G11RcyTFFpEseNVbf5faAm2BcTjDRPSEeP  
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -44,5 +46,4 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+- ロゴメーカー：https://logo-maker.stores.jp/
