@@ -50,7 +50,7 @@
         <tr>
           <th class="col-3">所感</th>
           <td class="col-8"><%= safe_join(@dailyreport.impression.split("\n"),tag(:br)) %></td>
-          <td class="col-1">
+          <td class="col-1 text-success">
             <% if current_user.position == true %>
               [<%= @dailyreport.score %>]
             <% end %>
@@ -59,7 +59,7 @@
       </table>
       <% if current_user.position == true %>
         <div>
-          <p class="ml-3 mb-0 text-success">※管理者ユーザーは所感欄に感情スコアが表示されます（-10～10,10に近い程ポジティブな感情)</p>
+          <p class="ml-3 mb-0 text-success">※管理者ユーザーは所感欄に感情スコアが表示されます（-10～10、10に近い程ポジティブな感情)</p>
           <p class="ml-3 text-success">　メンタルヘルスにご活用ください。</p>
         </div>
       <% end %>
