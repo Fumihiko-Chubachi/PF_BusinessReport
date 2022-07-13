@@ -15,6 +15,7 @@
         <nav class="navbar">
           <%= image_tag('logo_s.png') %>
           <ul class="nav navbar-right text-right">
+            <!--ログイン状況によるヘッダー表示分け-->
             <% if user_signed_in? %>
               <li class="nav-item">
                 <%= link_to "新規業務依頼", public_new_select_department_work_path, class:"btn btn-info mx-2" %>

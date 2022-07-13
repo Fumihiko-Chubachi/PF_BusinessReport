@@ -3,10 +3,12 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  # ログアウト後、ホーム画面へ遷移
   def after_sign_out_path_for(resource)
     root_path
   end
 
+  # ログイン後、業務一覧(ユーザー詳細ページ
   def after_sign_in_path_for(resource)
 	  public_user_path(current_user.id)
   end

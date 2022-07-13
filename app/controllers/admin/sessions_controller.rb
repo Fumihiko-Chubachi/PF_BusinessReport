@@ -3,10 +3,12 @@
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
+  # ログアウト後、ホームへ遷移
   def after_sign_out_path_for(resource)
     root_path
   end
 
+  # ログイン後、部署一覧画面へ
   def after_sign_in_path_for(resource)
 	  admin_departments_path
   end
