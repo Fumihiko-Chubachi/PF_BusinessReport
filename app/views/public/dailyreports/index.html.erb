@@ -27,6 +27,7 @@
           </tr>
         <% end %>
       </table>
+      <%= paginate @dailyreports %>
     <% else %>
       <!--管理職ユーザーの一覧表示-->
       <table class="table col-8">
@@ -51,6 +52,7 @@
           </tr>
         <% end %>
       </table>
+      <%= paginate @dailyreports %>
     <% end %>
   </div>
 </div>
